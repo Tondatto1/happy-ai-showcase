@@ -13,6 +13,8 @@ import {
   Target,
   Calendar,
 } from "lucide-react";
+import fold2 from "@/assets/fold-2-resultados.png";
+import fold3 from "@/assets/fold-3-como-funciona.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
