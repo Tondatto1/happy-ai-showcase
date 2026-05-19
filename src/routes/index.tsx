@@ -13,6 +13,8 @@ import {
   Target,
   Calendar,
 } from "lucide-react";
+import fold2 from "@/assets/fold-2-resultados.png";
+import fold3 from "@/assets/fold-3-como-funciona.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,9 +41,16 @@ function Landing() {
     <div className="relative min-h-screen overflow-hidden grain">
       <Nav />
       <Hero />
-      <Bento />
-      <HowItWorks />
-      <CTA />
+      <section className="w-full bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6">
+          <img src={fold2} alt="Resultados do novo modelo de treinamento" className="w-full h-auto" />
+        </div>
+      </section>
+      <section className="w-full bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6">
+          <img src={fold3} alt="Como funciona" className="w-full h-auto" />
+        </div>
+      </section>
       <Footer />
     </div>
   );
