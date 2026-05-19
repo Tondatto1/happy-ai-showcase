@@ -9,8 +9,10 @@ import {
   ArrowRight,
   CheckCircle2,
   Sparkles,
+  Clock,
+  Target,
+  Calendar,
 } from "lucide-react";
-import heroImg from "@/assets/hero-agent.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,78 +49,303 @@ function Landing() {
 
 function Nav() {
   return (
-    <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-      <div className="flex items-center gap-2">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--gradient-mint)] glow-mint">
-          <Sprout className="h-5 w-5 text-primary-foreground" strokeWidth={2.5} />
+    <header style={{ background: '#fff', borderBottom: '1px solid #f3f4f6' }} className="relative z-20 w-full">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#22c55e"/>
+              <path d="M10 22L16 10L22 22" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M12.5 18H19.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 20, color: '#111827', letterSpacing: '-0.02em' }}>Ailton</span>
+          </div>
         </div>
-        <span className="font-display text-xl font-bold tracking-tight">Agroach</span>
+
+        {/* Nav links */}
+        <nav className="hidden items-center gap-8 md:flex">
+          {['Como funciona', 'Para quem é', 'Benefícios', 'Depoimentos', 'FAQ'].map(link => (
+            <a key={link} href="#" style={{ fontFamily: 'Inter', fontSize: 14, color: '#374151', fontWeight: 500, textDecoration: 'none' }}
+              className="transition hover:opacity-70">{link}</a>
+          ))}
+        </nav>
+
+        {/* CTA button */}
+        <a
+          href="#contato"
+          style={{
+            background: 'transparent',
+            border: '2px solid #22c55e',
+            color: '#22c55e',
+            borderRadius: 6,
+            padding: '8px 18px',
+            fontFamily: 'Inter',
+            fontWeight: 700,
+            fontSize: 13,
+            letterSpacing: '0.03em',
+            textDecoration: 'none',
+            textTransform: 'uppercase',
+            transition: 'all 0.2s',
+          }}
+          className="hidden md:inline-flex items-center hover:bg-green-50"
+        >
+          QUERO ACESSO ANTECIPADO
+        </a>
       </div>
-      <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-        <a href="#recursos" className="transition hover:text-foreground">Recursos</a>
-        <a href="#como-funciona" className="transition hover:text-foreground">Como funciona</a>
-        <a href="#contato" className="transition hover:text-foreground">Contato</a>
-      </nav>
-      <a
-        href="#contato"
-        className="rounded-full bg-[var(--gradient-mint)] px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
-      >
-        Falar com vendas
-      </a>
     </header>
   );
 }
 
 function Hero() {
   return (
-    <section className="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-16 md:pt-24">
-      <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-mint" />
-            Novo · Treinador de IA para times do agro
-          </div>
-          <h1 className="mt-6 text-5xl font-bold leading-[1.05] md:text-7xl">
-            O <span className="text-gradient-mint">coach comercial</span> que vive no WhatsApp do seu time.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
-            Um agente de IA que treina vendedores do agronegócio em tempo real, padroniza
-            a abordagem e transforma cada conversa em oportunidade fechada.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+    <section style={{ background: '#fff' }} className="relative z-10 w-full">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+
+          {/* LEFT COLUMN */}
+          <div>
+            {/* Accent line */}
+            <div style={{ width: 48, height: 4, background: 'linear-gradient(90deg, #22c55e, #3b82f6)', borderRadius: 999, marginBottom: 28 }} />
+
+            {/* Headline */}
+            <h1 style={{
+              fontFamily: 'Inter',
+              fontWeight: 900,
+              fontSize: 'clamp(2.6rem, 5vw, 4rem)',
+              lineHeight: 1.05,
+              color: '#111827',
+              letterSpacing: '-0.03em',
+              textTransform: 'uppercase',
+              marginBottom: 24,
+            }}>
+              O FIM DO<br />
+              TREINAMENTO<br />
+              COMERCIAL<br />
+              TRADICIONAL
+            </h1>
+
+            {/* Subtitle */}
+            <p style={{
+              fontFamily: 'Inter',
+              fontSize: 17,
+              color: '#4b5563',
+              lineHeight: 1.6,
+              marginBottom: 36,
+              fontWeight: 400,
+            }}>
+              O agro não precisa de novos cursos.<br />
+              Precisa de um coach no bolso do vendedor<br />
+              24 horas por dia.
+            </p>
+
+            {/* CTA Button */}
             <a
               href="#contato"
-              className="group inline-flex items-center gap-2 rounded-full bg-[var(--gradient-mint)] px-7 py-4 text-sm font-semibold text-primary-foreground glow-mint transition hover:opacity-90"
+              id="hero-cta"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+                background: '#22c55e',
+                color: '#fff',
+                borderRadius: 8,
+                padding: '16px 28px',
+                fontFamily: 'Inter',
+                fontWeight: 700,
+                fontSize: 15,
+                letterSpacing: '0.04em',
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                boxShadow: '0 4px 20px rgba(34,197,94,0.35)',
+                transition: 'all 0.2s',
+                marginBottom: 40,
+              }}
+              className="hover:opacity-90 hover:-translate-y-0.5"
             >
-              Começar agora
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              <Calendar size={18} />
+              QUERO ACESSO ANTECIPADO
             </a>
-            <a
-              href="#como-funciona"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-4 text-sm font-semibold text-foreground transition hover:bg-card"
-            >
-              Ver como funciona
-            </a>
-          </div>
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground">
-            {["Integração nativa com WhatsApp", "Treinamentos diários", "Métricas por vendedor"].map((t) => (
-              <div key={t} className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-mint" />
-                {t}
-              </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="relative">
-          <div className="absolute -inset-4 rounded-3xl bg-[var(--gradient-mint)] opacity-20 blur-3xl" />
-          <div className="relative overflow-hidden rounded-3xl border border-border bento-card">
-            <img
-              src={heroImg}
-              alt="Visualização do agente de IA conectando time comercial ao agro"
-              className="aspect-[4/3] w-full object-cover"
-            />
+            {/* Feature badges */}
+            <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', marginTop: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                <div style={{ background: '#f0fdf4', borderRadius: '50%', padding: 8, marginTop: 2 }}>
+                  <Clock size={16} color="#22c55e" />
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: '#111827' }}>24h com você</div>
+                  <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#6b7280', marginTop: 2 }}>No bolso do vendedor,<br />sempre que precisar.</div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                <div style={{ background: '#eff6ff', borderRadius: '50%', padding: 8, marginTop: 2 }}>
+                  <Target size={16} color="#3b82f6" />
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: '#111827' }}>Respostas práticas</div>
+                  <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#6b7280', marginTop: 2 }}>Orientação personalizada<br />para cada negociação.</div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                <div style={{ background: '#f0fdf4', borderRadius: '50%', padding: 8, marginTop: 2 }}>
+                  <TrendingUp size={16} color="#22c55e" />
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 13, color: '#111827' }}>Mais resultados</div>
+                  <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#6b7280', marginTop: 2 }}>Conversas melhores,<br />mais vendas fechadas.</div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          {/* RIGHT COLUMN — Phone Mockup */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+            {/* Decorative green arc */}
+            <div style={{
+              position: 'absolute',
+              right: -40,
+              bottom: -20,
+              width: 180,
+              height: 180,
+              borderRadius: '50%',
+              border: '3px solid #22c55e',
+              opacity: 0.15,
+              pointerEvents: 'none',
+            }} />
+            <div style={{
+              position: 'absolute',
+              right: -20,
+              bottom: 0,
+              width: 120,
+              height: 120,
+              borderRadius: '50%',
+              border: '2px solid #3b82f6',
+              opacity: 0.1,
+              pointerEvents: 'none',
+            }} />
+
+            {/* Phone */}
+            <div className="phone-mockup">
+              {/* Notch */}
+              <div className="phone-notch" />
+
+              {/* Screen */}
+              <div className="phone-screen">
+                {/* Status bar */}
+                <div style={{ background: '#075e54', padding: '6px 16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ color: '#fff', fontSize: 11, fontWeight: 600 }}>11:30</span>
+                  <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                    <span style={{ color: '#fff', fontSize: 10 }}>▐▐▐</span>
+                    <span style={{ color: '#fff', fontSize: 10 }}>WiFi</span>
+                    <span style={{ color: '#fff', fontSize: 10 }}>▮</span>
+                  </div>
+                </div>
+
+                {/* WhatsApp Header */}
+                <div className="wapp-header">
+                  <div style={{ color: '#fff', fontSize: 18, cursor: 'pointer' }}>←</div>
+                  <div className="wapp-avatar">
+                    <svg viewBox="0 0 36 36" fill="none" width="36" height="36">
+                      <circle cx="18" cy="18" r="18" fill="#25d366"/>
+                      <circle cx="18" cy="14" r="6" fill="#fff" opacity="0.9"/>
+                      <ellipse cx="18" cy="28" rx="10" ry="7" fill="#fff" opacity="0.9"/>
+                    </svg>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ color: '#fff', fontWeight: 700, fontSize: 13 }}>Treinador</div>
+                    <div style={{ color: '#aed6b8', fontSize: 10 }}>online</div>
+                  </div>
+                  <div style={{ display: 'flex', gap: 14, color: '#fff', fontSize: 14 }}>
+                    <span>📹</span><span>📞</span><span>⋮</span>
+                  </div>
+                </div>
+
+                {/* Messages */}
+                <div className="wapp-messages">
+                  {/* Vendedor */}
+                  <div className="wapp-bubble sent">
+                    Ailton, cliente falou que meu produto é 30 reais mais caro por saca. Como quebro isso?
+                    <div className="wapp-time">10:13 ✓✓</div>
+                  </div>
+
+                  {/* Treinador */}
+                  <div style={{ display: 'flex', gap: 6, alignSelf: 'flex-start', maxWidth: '88%' }}>
+                    <div className="wapp-avatar" style={{ width: 26, height: 26, flexShrink: 0, alignSelf: 'flex-end' }}>
+                      <svg viewBox="0 0 36 36" fill="none" width="26" height="26">
+                        <circle cx="18" cy="18" r="18" fill="#25d366"/>
+                        <circle cx="18" cy="14" r="6" fill="#fff" opacity="0.9"/>
+                        <ellipse cx="18" cy="28" rx="10" ry="7" fill="#fff" opacity="0.9"/>
+                      </svg>
+                    </div>
+                    <div className="wapp-bubble received">
+                      Opa! Antes do plano, me responde: qual o perfil desse cliente e qual problema ele tem que sua semente resolve?
+                      <div className="wapp-time">10:15</div>
+                    </div>
+                  </div>
+
+                  {/* Vendedor */}
+                  <div className="wapp-bubble sent">
+                    Fazendeiro de soja, 800 ha. Perde produtividade com pragas. Minha semente resolve, mas ele só vê preço.
+                    <div className="wapp-time">10:16 ✓✓</div>
+                  </div>
+
+                  {/* Treinador */}
+                  <div style={{ display: 'flex', gap: 6, alignSelf: 'flex-start', maxWidth: '88%' }}>
+                    <div className="wapp-avatar" style={{ width: 26, height: 26, flexShrink: 0, alignSelf: 'flex-end' }}>
+                      <svg viewBox="0 0 36 36" fill="none" width="26" height="26">
+                        <circle cx="18" cy="18" r="18" fill="#25d366"/>
+                        <circle cx="18" cy="14" r="6" fill="#fff" opacity="0.9"/>
+                        <ellipse cx="18" cy="28" rx="10" ry="7" fill="#fff" opacity="0.9"/>
+                      </svg>
+                    </div>
+                    <div className="wapp-bubble received">
+                      Perfeito. O que você falou quando ele disse que tava caro?
+                      <div className="wapp-time">10:17</div>
+                    </div>
+                  </div>
+
+                  {/* Vendedor */}
+                  <div className="wapp-bubble sent">
+                    Falei que era mais resistente e dava mais produtividade. Ele disse 'depois eu vejo' e não voltou.
+                    <div className="wapp-time">10:18 ✓✓</div>
+                  </div>
+
+                  {/* Treinador */}
+                  <div style={{ display: 'flex', gap: 6, alignSelf: 'flex-start', maxWidth: '92%' }}>
+                    <div className="wapp-avatar" style={{ width: 26, height: 26, flexShrink: 0, alignSelf: 'flex-end' }}>
+                      <svg viewBox="0 0 36 36" fill="none" width="26" height="26">
+                        <circle cx="18" cy="18" r="18" fill="#25d366"/>
+                        <circle cx="18" cy="14" r="6" fill="#fff" opacity="0.9"/>
+                        <ellipse cx="18" cy="28" rx="10" ry="7" fill="#fff" opacity="0.9"/>
+                      </svg>
+                    </div>
+                    <div className="wapp-bubble received">
+                      Pronto. O erro não foi o preço — foi não traduzir os 15% a mais de produtividade em dinheiro no bolso dele. Vou montar um plano pra você voltar com argumento que ele não ignora. Topa?
+                      <div className="wapp-time">10:19</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Input bar */}
+                <div className="wapp-input-bar">
+                  <span style={{ fontSize: 16, color: '#888' }}>😊</span>
+                  <div className="wapp-input-field">Mensagem</div>
+                  <span style={{ fontSize: 14, color: '#888' }}>📎</span>
+                  <span style={{ fontSize: 14, color: '#888' }}>📷</span>
+                  <div style={{
+                    width: 32, height: 32, borderRadius: '50%',
+                    background: '#22c55e', display: 'flex',
+                    alignItems: 'center', justifyContent: 'center',
+                    color: '#fff', fontSize: 14,
+                  }}>🎤</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
