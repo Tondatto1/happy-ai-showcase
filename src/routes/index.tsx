@@ -41,9 +41,16 @@ function Landing() {
     <div className="relative min-h-screen overflow-hidden grain">
       <Nav />
       <Hero />
-      <Bento />
-      <HowItWorks />
-      <CTA />
+      <section className="w-full bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6">
+          <img src={fold2} alt="Resultados do novo modelo de treinamento" className="w-full h-auto" />
+        </div>
+      </section>
+      <section className="w-full bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6">
+          <img src={fold3} alt="Como funciona" className="w-full h-auto" />
+        </div>
+      </section>
       <Footer />
     </div>
   );
